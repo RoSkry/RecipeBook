@@ -1,15 +1,12 @@
 import React from "react"
 
-class Footer extends React.Component
+function Footer (props)
 {
-    render()
-    {
     return(
         <footer>
             You are welcome {this.props.text}
         </footer>
-    );
-    }
+    );   
 }
 
 export default Footer

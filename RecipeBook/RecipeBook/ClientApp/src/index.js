@@ -6,6 +6,13 @@ import Footer from "./components/Footer"
 import Header from "./components/Header"
 
 class App extends React.Component {
+
+    editRecipe=()=>{}
+    addRecipe=()=>{}
+    deleteRecipe=()=>
+    {
+
+    }
     render() {
         return (
             <div className="App">
