@@ -6,7 +6,7 @@ class Footer extends React.Component
     {
     return(
         <footer>
-            You are welcome {this.text}
+            You are welcome {this.props.text}
         </footer>
     );
     }
