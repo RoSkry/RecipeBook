@@ -4,7 +4,7 @@ function Footer (props)
 {
     return(
         <footer>
-            You are welcome {this.props.text}
+            You are welcome {this.props.text} !
         </footer>
     );   
 }
