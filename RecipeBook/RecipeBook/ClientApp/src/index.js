@@ -7,9 +7,18 @@ import Header from "./components/Header"
 
 class App extends React.Component {
 
-    editRecipe=()=>{}
-    addRecipe=()=>{}
-    deleteRecipe=()=>
+    editRecipe=e=>
+    {
+      
+    }
+
+    addRecipe=e=>
+    {
+
+
+    }
+
+    deleteRecipe=e=>
     {
 
     }
@@ -17,6 +26,8 @@ class App extends React.Component {
         return (
             <div className="App">
                 <Header />
+
+                <button onClick={this.addRecipe}></button>
                 <Footer text="user"/> 
             </div>
         );
