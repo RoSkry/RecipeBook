@@ -6,6 +6,7 @@ import Footer from "./components/Footer"
 import Header from "./components/Header"
 
 class App extends React.Component {
+    state={recipes:[]}
 
     editRecipe=e=>
     {
@@ -23,11 +24,12 @@ class App extends React.Component {
 
     }
     render() {
+        const recipes= this.state.recipes()
         return (
             <div className="App">
                 <Header />
-
-                <button onClick={this.addRecipe}></button>
+                <button onClick={this.addRecipe}>Add recipe</button>
+                <button onClick={this.editRecipe}>Add recipe</button>
                 <Footer text="user"/> 
             </div>
         );

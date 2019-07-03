@@ -1,10 +1,11 @@
 import React from "react"
 
-function Footer (props)
+
+  function Footer (props)
 {
     return(
         <footer>
-            You are welcome {this.props.text} !
+            You are welcome {props.text} !
         </footer>
     );   
 }

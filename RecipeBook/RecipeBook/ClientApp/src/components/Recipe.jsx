@@ -2,7 +2,7 @@
 import ReactDOM from "react-dom";
 
 class Recipe extends React.Component {
-    state = { name: "", author: "", description: "", ingredients: [] };
+    state = { name: "", author: "", steps: [], ingredients: [] };
     onNameChange(e) {
 		this.setState({
 			name: e.target.value
@@ -15,9 +15,9 @@ class Recipe extends React.Component {
         });
     }
         
-    onDescriptionChange(e) {
+    onStepsChange(e) {
         this.setState({
-            description: e.target.value
+            steps: e.target.value
         });
     }
     onIngredientsChange(e) {
@@ -29,13 +29,19 @@ class Recipe extends React.Component {
     
   render()
   {
-      const[name,author,description,ingredients]=this.state;
+      const[name,author]=this.state;
+      const steps=this.state.steps.map(step=><li>{step}</li>)
+      const ingredients=this.state.ingredients.map(ingredient=><li>{ingredient}</li>)
       return(
 <div>   
     <div>{name}</div>
     <div>{author}</div>
-    <div>{description}</div>
-    <div>{ingredients}</div>
+    <ul>{steps}</ul>
+    <ul>{ingredients}</ul>
+    <div>
+        <button onClick={this.props.deleteRecipe}></button>
+        <button onClick={this.props.deleteRecipe}></button>
+    </div>
 <div>
 <ul>
 
