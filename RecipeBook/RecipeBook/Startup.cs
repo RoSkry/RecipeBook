@@ -27,7 +27,7 @@ namespace RecipeBook
             string connection = Configuration.GetConnectionString("DefaultConnection");
 
             services.AddDbContext<RecipeContext>(options => { options.UseSqlServer(connection); });
-
+            services.AddTransient<IRepository, DataRepository>();
             // In production, the React files will be served from this directory
           //  services.AddSpaStaticFiles(configuration =>
            // {
