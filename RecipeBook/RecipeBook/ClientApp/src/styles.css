@@ -2,3 +2,10 @@
     font-family: sans-serif;
     text-align: center;
 }
+.Visible{
+    display: none;
+}
+.Invisible{
+    display: block;
+}
+
