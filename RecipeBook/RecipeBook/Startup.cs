@@ -28,11 +28,12 @@ namespace RecipeBook
 
             services.AddDbContext<RecipeContext>(options => { options.UseSqlServer(connection); });
             services.AddTransient<IRepository, DataRepository>();
+            
             // In production, the React files will be served from this directory
-          //  services.AddSpaStaticFiles(configuration =>
-           // {
-         //       configuration.RootPath = "ClientApp/build";
-          //  });
+            services.AddSpaStaticFiles(configuration =>
+            {
+                configuration.RootPath = "ClientApp/build";
+            });
 
             services.AddMvc();
         }
@@ -50,17 +51,19 @@ namespace RecipeBook
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
+            
             app.UseHttpsRedirection();
             app.UseStaticFiles();
           //  app.UseSpaStaticFiles();
-
+          
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller}/{action=Index}/{id?}");
             });
+
+            RecipeInitializer.Initialize(app);
 
             app.UseSpa(spa =>
             {
@@ -71,6 +74,8 @@ namespace RecipeBook
                     spa.UseReactDevelopmentServer(npmScript: "start");
                 }
             });
+
+            RecipeInitializer.Initialize(app);
         }
     }
 }
