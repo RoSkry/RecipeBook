@@ -10,8 +10,8 @@ using RecipeBook.Models;
 namespace RecipeBook.Migrations
 {
     [DbContext(typeof(RecipeContext))]
-    [Migration("20190705100001_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20190705142054_InintialCreate")]
+    partial class InintialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

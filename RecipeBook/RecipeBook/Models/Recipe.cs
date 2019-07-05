@@ -9,7 +9,7 @@ namespace RecipeBook.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public ICollection<Ingredient> Ingredients { get; set; }
-        public ICollection<Step> Steps { get; set; }
+        public IEnumerable<Ingredient> Ingredients { get; set; }
+        public IEnumerable<Step> Steps { get; set; }
     }
 }

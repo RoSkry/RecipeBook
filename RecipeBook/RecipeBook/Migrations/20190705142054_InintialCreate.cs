@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RecipeBook.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class InintialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

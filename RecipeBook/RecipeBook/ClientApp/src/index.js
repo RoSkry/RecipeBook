@@ -8,6 +8,17 @@ import Header from "./components/Header"
 class App extends React.Component {
     state={recipes:[], arrLength:0, isHidden:true}
 
+
+    componentDidMount()
+    {
+    fetch("https://localhost:44314/api/recipe")
+    .then(res=>res.json()).then(res=>{
+       JSON.stringify(res);
+       console.log(res);
+      this.setState({recipes:res});
+     })
+     console.log("recipe");
+    }
     editRecipe=e=>
     {
       
