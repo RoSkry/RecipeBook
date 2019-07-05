@@ -3,8 +3,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using RecipeBook.Models;
 
 namespace RecipeBook
 {
@@ -20,13 +22,20 @@ namespace RecipeBook
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+           // services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
+            string connection = Configuration.GetConnectionString("DefaultConnection");
+
+            services.AddDbContext<RecipeContext>(options => { options.UseSqlServer(connection); });
+            services.AddTransient<IRepository, DataRepository>();
+            
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/build";
             });
+
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,17 +51,19 @@ namespace RecipeBook
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
+            
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseSpaStaticFiles();
-
+          //  app.UseSpaStaticFiles();
+          
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller}/{action=Index}/{id?}");
             });
+
+            RecipeInitializer.Initialize(app);
 
             app.UseSpa(spa =>
             {
@@ -63,6 +74,8 @@ namespace RecipeBook
                     spa.UseReactDevelopmentServer(npmScript: "start");
                 }
             });
+
+            RecipeInitializer.Initialize(app);
         }
     }
 }
