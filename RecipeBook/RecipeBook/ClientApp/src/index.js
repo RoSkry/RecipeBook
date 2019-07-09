@@ -14,9 +14,9 @@ class App extends React.Component {
       .then(res => {
         JSON.stringify(res);
         console.log(res);
-        this.setState({ recipes: res });
+        this.setState({ recipes: {...res} },()=>{console.log(this.state);});
       });
-    console.log("recipe");
+    console.log();
   }
   editRecipe = e => {};
 
@@ -36,6 +36,7 @@ class App extends React.Component {
           editRecipe={this.editRecipe}
         />
       );
+     // console.log(recipes+'sdfsdfdssdfsd');
     });
     return (
       <div>

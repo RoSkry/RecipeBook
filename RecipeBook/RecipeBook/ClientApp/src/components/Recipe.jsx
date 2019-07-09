@@ -23,9 +23,10 @@ class Recipe extends React.Component {
 
 
     render() {
-        const {name} = this.state;
-        const steps = this.state.steps.map(step => <li>{step}</li>)
-        const ingredients = this.state.ingredients.map(ingredient => <li>{ingredient}</li>)
+        const {name} = this.props.recipe;
+       
+        const steps = this.props.recipe.steps.map(step => <li>{step}</li>)
+        const ingredients = this.props.recipe.ingredients.map(ingredient => <li>{ingredient}</li>)
         return (
             <div>
                 <div>{name}</div>
