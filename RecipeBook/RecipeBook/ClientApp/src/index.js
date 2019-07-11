@@ -13,10 +13,10 @@ class App extends React.Component {
       .then(res => res.json())
       .then(res => {
         JSON.stringify(res);
-        console.log(res);
-        this.setState({ recipes: {...res} },()=>{console.log(this.state);});
+        this.setState({ recipes: res});
       });
-    console.log();
+      console.log(this.state.recipes);
+      console.log('fg');
   }
   editRecipe = e => {};
 
@@ -27,6 +27,7 @@ class App extends React.Component {
 
   deleteRecipe = e => {};
   render() {
+    console.log(this.state.recipes)
     const recipes = this.state.recipes.map((recipe, idx) => {
       return (
         <Recipe

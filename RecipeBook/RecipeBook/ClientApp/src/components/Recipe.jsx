@@ -21,17 +21,34 @@ class Recipe extends React.Component {
         });
     }
 
+    getIngredients() {
+    return this.props.recipe.ingredients.map(ingredient =>{ 
+        
+        return <li>{ingredient.name}</li>
+    });
+    }
+
+    getSteps() {
+        return this.props.recipe.steps.map(step => {
+            console.log(step.name);
+            return <li>{step.name}</li>
+        });
+    }
 
     render() {
-        const {name} = this.props.recipe;
-       
-        const steps = this.props.recipe.steps.map(step => <li>{step}</li>)
-        const ingredients = this.props.recipe.ingredients.map(ingredient => <li>{ingredient}</li>)
+        console.log(this.props.recipe);
+        const { name } = this.props.recipe;
+        console.log(name);
+        const steps = this.getSteps();
+        console.log(steps);
+
+        const ingredients = this.getIngredients();
+        console.log(ingredients);
         return (
             <div>
                 <div>{name}</div>
-                <ul>{steps}</ul>
-                <ul>{ingredients}</ul>
+                <ul>{this.getSteps()}</ul>
+                <ul>{this.getIngredients()}</ul>
                 <div>
                     <button onClick={this.props.editRecipe}></button>
                     <button onClick={this.props.deleteRecipe}></button>
